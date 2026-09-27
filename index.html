@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retour vers Tirelire</title>
+<body style="font-family:sans-serif;text-align:center;padding:3em 1em">
+<p>Autorisation terminée. Retour vers l'app…</p>
+<p><a id="lien" style="font-size:1.3em">Ouvrir Tirelire</a></p>
+<script>
+  var q = location.search;
+  var intentUrl = "intent://callback" + q + "#Intent;scheme=tirelire;package=com.tirelire;end";
+  var plain = "tirelire://callback" + q;
+  var a = document.getElementById("lien");
+  a.href = /Android/i.test(navigator.userAgent) ? intentUrl : plain;
+  location.replace(a.href);
+</script>
+</body>
+</html>
